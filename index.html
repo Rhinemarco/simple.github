@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Responsive Navbar</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        text-decoration: none;
+      }
+
+      body {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+          sans-serif;
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+
+      header {
+        padding: 10px 15px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        padding-right: 27rem;
+        padding-left: 2rem;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background-color: white;
+      }
+      ul {
+        flex-wrap: wrap;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex: 1 1 100px;
+      }
+
+      .logo img {
+        width: 60px;
+      }
+
+      .logo span {
+        font-weight: bold;
+        font-size: 25px;
+      }
+
+      nav ul {
+        display: flex;
+        gap: 40px;
+        padding: 10px 0;
+      }
+
+      ul li a {
+        color: black;
+        font-size: 25px;
+      }
+
+      .burger {
+        display: none;
+        cursor: pointer;
+      }
+
+      .bar1,
+      .bar2,
+      .bar3 {
+        width: 35px;
+        height: 5px;
+        background-color: #333;
+        margin: 6px 0;
+        transition: 0.4s;
+      }
+
+      .show .bar1 {
+        transform: translate(0, 11px) rotate(-45deg);
+      }
+
+      .show .bar2 {
+        opacity: 0;
+      }
+
+      .show .bar3 {
+        transform: translate(0, -11px) rotate(45deg);
+      }
+
+      .menu-logo {
+        display: none;
+        flex-direction: column;
+        font-size: 20px;
+        font-weight: bold;
+      }
+      .menu-logo img {
+        width: 60px;
+      }
+
+      @media (max-width: 780px) {
+        .burger {
+          display: block;
+        }
+        .logo {
+          display: none;
+        }
+
+        nav ul {
+          display: none;
+          flex-direction: column;
+          position: absolute;
+          top: 60px;
+          left: 0;
+          width: 100%;
+          background-color: white;
+          text-align: center;
+          padding: 10px 0;
+        }
+
+        nav ul.show {
+          display: flex;
+        }
+
+        .menu-logo {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 10px;
+          padding: 10px;
+          border-bottom: 1px solid #ddd;
+        }
+        .map_title h3 {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        }
+        .map_title .img {
+          margin-right: 200px;
+        }
+      }
+      section {
+        margin-top: 75px;
+        width: 100%;
+        height: 250vh;
+        display: flex;
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+      .pic {
+        background-image: url("429677826_817470910414370_837529.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        width: 100%;
+        height: 70vh;
+      }
+
+      .text h3:nth-child(1) {
+        padding-left: 110px;
+      }
+      .text h3 {
+        font-size: 30px;
+      }
+      .flag {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        height: 30vh;
+      }
+
+      .cap_sd {
+        width: 100%;
+        height: 40vh;
+        background-color: rgba(217, 217, 217, 1);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .cap_sd .text_sd p {
+        width: 600px;
+        font-size: 20px;
+      }
+      .map {
+        display: flex;
+        justify-content: center;
+      }
+      .map_title {
+        margin-top: 40px;
+        font-size: 30px;
+        flex-wrap: wrap;
+      }
+      .map_title .img {
+        margin-left: 220px;
+        margin-top: 70px;
+      }
+      footer {
+        background-color: rgba(217, 217, 217, 1);
+        height: 101px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <img src="296727749_109755761831799_371819.png" alt="logo" />
+        <span>Sapang Dalaga</span>
+      </div>
+
+      <div class="burger" onclick="toggleMenu()">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </div>
+
+      <nav>
+        <ul id="menu">
+          <li class="menu-logo">
+            <img src="296727749_109755761831799_371819.png" alt="logo" />
+            <h3>Sapang Dalaga</h3>
+          </li>
+          <li class="menu"><a href="#">Home</a></li>
+          <li class="menu"><a href="#">Municipality</a></li>
+          <li class="menu"><a href="#">Tourism</a></li>
+          <li class="menu"><a href="#">About us</a></li>
+          <li class="menu"><a href="#">Contact us</a></li>
+        </ul>
+      </nav>
+    </header>
+    <section>
+      <div class="pic"></div>
+
+      <div class="flag">
+        <div class="logo_text">
+          <img
+            src="296727749_109755761831799_371819.png"
+            alt="logo"
+            width="100px"
+          />
+        </div>
+        <div class="text">
+          <h3>Sapang dalaga</h3>
+          <h3>Province of Misamis Occidental</h3>
+        </div>
+      </div>
+      <div class="cap_sd">
+        <div class="text_sd">
+          <p>
+            Located in Region 10, Northern Mindanao, Sapang Dalaga is a fifth
+            class municipality in the province of Misamis Occidental. It is
+            approximately 50 kilometers from the airport of Dipolog City and
+            around 96 kilometers from Ozamiz City. From Ozamiz, it will be about
+            two to three hours of travel. This part of the region boasts of
+            panoramic mountains, Mount Pedoluan and Mount Dasa as well as bodies
+            of water. It has 28 barangays.
+          </p>
+        </div>
+      </div>
+
+      <div class="map">
+        <div class="map_title">
+          <h3>Map of Misamis Occidental with <span>Sapang Dalaga</span></h3>
+          <img
+            class="img"
+            src="Ph_locator_misamis_occidental_sa.png"
+            alt=""
+            width="350px"
+          />
+        </div>
+      </div>
+    </section>
+    <footer>
+      <div class="foot_text">
+        <h3>Copyright © 2025 Sapang Dalaga</h3>
+      </div>
+    </footer>
+  </body>
+  <script>
+    function toggleMenu() {
+      document.getElementById("menu").classList.toggle("show");
+      document.querySelector(".burger").classList.toggle("show");
+    }
+  </script>
+</html>
